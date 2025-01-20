@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycling Incentive Program</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('recyclingForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const householdName = document.getElementById('householdName').value;
+                const recyclingAmount = parseFloat(document.getElementById('recyclingAmount').value);
+                const week = document.getElementById('week').value;
+
+                let message = `Thank you, ${householdName}! You have logged ${recyclingAmount} kg of recycling for ${week}.`;
+
+                // Check if the recycling amount is less than 10.15 kg
+                if (recyclingAmount < 10.15) {
+                    message += " Keep it up! Try to recycle more next time!";
+                }
+
+                alert(message);
+                
+                // Here you can add code to save the data to a database or local storage
+                this.reset(); // Reset the form after submission
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input[type="number"], input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Recycling Incentive Program</h1>
+</header>
+
+<main>
+    <section>
+        <h2>Explore the Effects of Waste on the Environment</h2>
+        <p>Waste has a significant impact on our environment. It contributes to pollution, harms wildlife, and takes up valuable space in landfills. By recycling, we can reduce waste and conserve natural resources.</p>
+        <p>Join us in making a difference by logging your recycling efforts!</p>
+    </section>
+
+    <section>
+        <h2>Log Your Recycling</h2>
+        <form id="recyclingForm">
+            <label for="householdName">Household Name:</label>
+            <input type="text" id="householdName" name="householdName" required aria-label="Household Name">
+
+            <label for="recyclingAmount">Recycling Amount (in kg):</label>
+            <input type="number" id="recyclingAmount" name="recyclingAmount" required aria-label="Recycling Amount">
+
+            <label for="week">Week:</label>
+            <input type="text" id="week" name="week" placeholder="e.g., Week 1" required aria-label="Week">
+
+            <input type="submit" value="Log Recycling">
+        </form>
+    </section>
+</main>
+<script>
+    document.getElementById('recyclingForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const householdName = document.getElementById('householdName').value;
+        const recyclingAmount = document.getElementById('recyclingAmount').value;
+        const week = document.getElementById('week').value;
+
+        alert(`Thank you, ${householdName}! You have logged ${recyclingAmount} kg of recycling for ${week}.`);
+        
+        // Here you can add code to save the data to a database or local storage
+        this.reset(); // Reset the form after submission
+    });
+</script>
+
+</body>
+</html>
