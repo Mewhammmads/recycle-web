@@ -15,15 +15,15 @@
 
                 let message = `Thank you, ${householdName}! You have logged ${recyclingAmount} kg of recycling for ${week}.`;
 
-                // Check if the recycling amount is less than 10.15 kg
+                
                 if (recyclingAmount < 10.15) {
                     message += " Keep it up! Try to recycle more next time!";
                 }
 
                 alert(message);
                 
-                // Here you can add code to save the data to a database or local storage
-                this.reset(); // Reset the form after submission
+                
+                this.reset(); 
             });
         });
     </script>
@@ -83,9 +83,25 @@
 
 <main>
     <section>
-        <h2>Explore the Effects of Waste on the Environment</h2>
-        <p>Waste has a significant impact on our environment. It contributes to pollution, harms wildlife, and takes up valuable space in landfills. By recycling, we can reduce waste and conserve natural resources.</p>
-        <p>Join us in making a difference by logging your recycling efforts!</p>
+        <h2>Sign Up / Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required aria-label="Username">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required aria-label="Password">
+
+            <input type="submit" value="Login">
+        </form>
+        <form id="signupForm">
+            <label for="newUsername">Create Username:</label>
+            <input type="text" id="newUsername" name="newUsername" required aria-label="Create Username">
+
+            <label for="newPassword">Create Password:</label>
+            <input type="password" id="newPassword" name="newPassword" required aria-label="Create Password">
+
+            <input type="submit" value="Sign Up">
+        </form>
     </section>
 
     <section>
@@ -103,20 +119,13 @@
             <input type="submit" value="Log Recycling">
         </form>
     </section>
-</main>
-<script>
-    document.getElementById('recyclingForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const householdName = document.getElementById('householdName').value;
-        const recyclingAmount = document.getElementById('recyclingAmount').value;
-        const week = document.getElementById('week').value;
 
-        alert(`Thank you, ${householdName}! You have logged ${recyclingAmount} kg of recycling for ${week}.`);
-        
-        // Here you can add code to save the data to a database or local storage
-        this.reset(); // Reset the form after submission
-    });
-</script>
+    <section>
+        <h2>Explore the Effects of Waste on the Environment</h2>
+        <p>Waste has a significant impact on our environment. It contributes to pollution, harms wildlife, and takes up valuable space in landfills. By recycling, we can reduce waste and conserve natural resources.</p>
+        <p>Join us in making a difference by logging your recycling efforts!</p>
+    </section>
+</main>
 
 </body>
 </html>
