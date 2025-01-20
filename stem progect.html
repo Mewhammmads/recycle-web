@@ -10,19 +10,34 @@
             document.getElementById('recyclingForm').addEventListener('submit', function(event) {
                 event.preventDefault();
                 const householdName = document.getElementById('householdName').value;
-                const recyclingAmount = parseFloat(document.getElementById('recyclingAmount').value);
-                const week = document.getElementById('week').value;
+                const plasticAmount = parseFloat(document.getElementById('plasticAmount').value) || 0;
+                const glassAmount = parseFloat(document.getElementById('glassAmount').value) || 0;
+                const paperAmount = parseFloat(document.getElementById('paperAmount').value) || 0;
+                const electronicsAmount = parseFloat(document.getElementById('electronicsAmount').value) || 0;
 
-                let message = `Thank you, ${householdName}! You have logged ${recyclingAmount} kg of recycling for ${week}.`;
+                const totalAmount = plasticAmount + glassAmount + paperAmount + electronicsAmount;
 
-                
-                if (recyclingAmount < 10.15) {
-                    message += " Keep it up! Try to recycle more next time!";
+                if (totalAmount === 0) {
+                    alert("Please enter at least one recycling amount.");
+                    return;
+                }
+
+                const plasticPercentage = ((plasticAmount / totalAmount) * 100).toFixed(2);
+                const glassPercentage = ((glassAmount / totalAmount) * 100).toFixed(2);
+                const paperPercentage = ((paperAmount / totalAmount) * 100).toFixed(2);
+                const electronicsPercentage = ((electronicsAmount / totalAmount) * 100).toFixed(2);
+
+                let message = `Thank you, ${householdName}! You have logged a total of ${totalAmount} kg of recycling.\n` +
+                              `- Plastic: ${plasticPercentage}%\n` +
+                              `- Glass: ${glassPercentage}%\n` +
+                              `- Paper: ${paperPercentage}%\n` +
+                              `- Electronics: ${electronicsPercentage}%`;
+
+                if (totalAmount < 10.15) {
+                    message += "\nKeep it up! Try to recycle more next time!";
                 }
 
                 alert(message);
-                
-                
                 this.reset(); 
             });
         });
@@ -110,8 +125,17 @@
             <label for="householdName">Household Name:</label>
             <input type="text" id="householdName" name="householdName" required aria-label="Household Name">
 
-            <label for="recyclingAmount">Recycling Amount (in kg):</label>
-            <input type="number" id="recyclingAmount" name="recyclingAmount" required aria-label="Recycling Amount">
+            <label for="plasticAmount">Plastic Amount (in kg):</label>
+            <input type="number" id="plasticAmount" name="plasticAmount" required aria-label="Plastic Amount">
+
+            <label for="glassAmount">Glass Amount (in kg):</label>
+            <input type="number" id="glassAmount" name="glassAmount" required aria-label="Glass Amount">
+
+            <label for="paperAmount">Paper Amount (in kg):</label>
+            <input type="number" id="paperAmount" name="paperAmount" required aria-label="Paper Amount">
+
+            <label for="electronicsAmount">Electronics Amount (in kg):</label>
+            <input type="number" id="electronicsAmount" name="electronicsAmount" required aria-label="Electronics Amount">
 
             <label for="week">Week:</label>
             <input type="text" id="week" name="week" placeholder="e.g., Week 1" required aria-label="Week">
